@@ -1,227 +1,184 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>𝕊𝕊𝕖𝕔𝕥𝕚𝕠𝕟 - 𝒫𝑜𝓇𝓉𝑜𝒻𝑜𝓁𝒾𝑜</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-        body { font-family: 'Inter', sans-serif; }
-        /*.gradient-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }*/
-        .gradient-bg { 
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>𝕊𝕊𝕖𝕔𝕥𝕚𝕠𝕟 - 𝒫𝑜𝓇𝓉𝑜𝒻𝑜𝓁𝒾𝑜</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+body { font-family: 'Inter', sans-serif; }
+
+.gradient-bg { 
   background: url('https://files.catbox.moe/1tyxyt.png') no-repeat center center; 
   background-size: cover;
+  position: relative;
 }
-        .gradient-bg::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.4); /* adjust 0.4 for darkness */
-    z-index: 0;
+.gradient-bg::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.4);
+  z-index: 0;
 }
-.gradient-bg > div {
-    position: relative;
-    z-index: 1; /* ensures text is above overlay */
-}
+.gradient-bg > div { position: relative; z-index: 1; }
 
-        .card-hover { transition: transform 0.3s ease, box-shadow 0.3s ease; }
-        .card-hover:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
-        .skill-bar { transition: width 1s ease-in-out; }
-        .fade-in { opacity: 0; transform: translateY(20px); transition: all 0.6s ease; }
-        .fade-in.visible { opacity: 1; transform: translateY(0); }
-    </style>
+.card-hover { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+.card-hover:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+.skill-bar { transition: width 1s ease-in-out; }
+.fade-in { opacity: 0; transform: translateY(20px); transition: all 0.6s ease; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+
+/* Typing animation */
+.typing-container {
+  display: inline-block;
+  border-right: 4px solid white;
+  white-space: nowrap;
+  overflow: hidden;
+  font-weight: 500;
+}
+.typing-container.about { border-right-color: black; }
+@keyframes blinkCursor {
+  0%, 49% { border-color: white; }
+  50%, 100% { border-color: transparent; }
+}
+.typing-container.blink { animation: blinkCursor 0.8s infinite; }
+</style>
 </head>
 <body class="bg-gray-50">
-    <!-- Navigation -->
-    <nav class="fixed top-0 w-full bg-white/90 backdrop-blur-sm z-50 shadow-sm">
-        <div class="max-w-6xl mx-auto px-6 py-4">
-            <div class="flex justify-between items-center">
-                <div class="text-2xl font-bold text-gray-800">𝕊𝕊</div>
-                <div class="hidden md:flex space-x-8">
-                    <a href="#home" class="text-gray-600 hover:text-blue-600 transition-colors">Home</a>
-                    <a href="#about" class="text-gray-600 hover:text-blue-600 transition-colors">About</a>
-                    <a href="#skills" class="text-gray-600 hover:text-blue-600 transition-colors">Skills</a>
-                    <a href="#projects" class="text-gray-600 hover:text-blue-600 transition-colors">Projects</a>
-                    <a href="#contact" class="text-gray-600 hover:text-blue-600 transition-colors">Contact</a>
-                </div>
-                <button id="mobile-menu" class="md:hidden text-gray-600">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
-                </button>
-            </div>
-        </div>
-    </nav>
 
-    <!-- Hero Section -->
+<!-- Navigation -->
+<nav class="fixed top-0 w-full bg-white/90 backdrop-blur-sm z-50 shadow-sm">
+  <div class="max-w-6xl mx-auto px-6 py-4">
+    <div class="flex justify-between items-center">
+      <div class="text-2xl font-bold text-gray-800">𝕊𝕊</div>
+      <div class="hidden md:flex space-x-8">
+        <a href="#home" class="text-gray-600 hover:text-blue-600 transition-colors">Home</a>
+        <a href="#about" class="text-gray-600 hover:text-blue-600 transition-colors">About</a>
+        <a href="#skills" class="text-gray-600 hover:text-blue-600 transition-colors">Skills</a>
+        <a href="#projects" class="text-gray-600 hover:text-blue-600 transition-colors">Projects</a>
+        <a href="#contact" class="text-gray-600 hover:text-blue-600 transition-colors">Contact</a>
+      </div>
+      <button id="mobile-menu" class="md:hidden text-gray-600">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
 <section id="home" class="gradient-bg min-h-screen flex items-center justify-center text-white">
   <div class="text-center px-6 fade-in">
     <div class="w-32 h-32 mx-auto mb-8 rounded-full bg-white/20 flex items-center justify-center overflow-hidden">
       <img src="https://cdn.discordapp.com/attachments/1393537285324013610/1414549233553510480/Screenshot_2025-07-07_230113.png?ex=68bff922&is=68bea7a2&hm=a7d43747a32e3407ac65c95bd8b6dafe78e69faf0d10728724e91868bb49576f&" 
-           alt="Profile"
-           class="w-full h-full object-cover">
+           alt="Profile" class="w-full h-full object-cover">
     </div>
     <h1 class="text-5xl md:text-7xl font-bold mb-6">𝓢𝓢𝓮𝓬𝓽𝓲𝓸𝓷</h1>
     <p class="text-xl md:text-2xl mb-8 text-white/90">Student from Indonesia.</p>
     <p class="text-lg mb-12 max-w-2xl mx-auto text-white/80">
-      Learns everything he wants, And gets it done.
+      <span id="typing" class="typing-container blink"></span>
     </p>
     <div class="space-x-4">
-      <a href="#projects" class="bg-white text-purple-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors">
-        View My Work
-      </a>
-      <a href="#contact" class="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-purple-600 transition-colors">
-        Contact me
-      </a>
+      <a href="#projects" class="bg-white text-purple-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors">View My Work</a>
+      <a href="#contact" class="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-purple-600 transition-colors">Contact me</a>
     </div>
   </div>
 </section>
 
-    <!-- About Section -->
-    <section id="about" class="py-20 bg-white">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div class="fade-in">
-                    <h2 class="text-4xl font-bold text-gray-800 mb-6">About Me</h2>
-                    <p class="text-gray-600 mb-6 leading-relaxed">
-                        I'm a 14 Years old student from Indonesia. I learn pretty much everything I find interesting. I'm learning Python, HTML and CSS. Also, I'm currently learning how to develop a game!
-                    </p>
-                    <p class="text-gray-600 mb-8 leading-relaxed">
-                        When I'm not coding, you'll probably find me playing games. Oh and I do play roblox.
-                        I'm using a GTX 1650 with a I5 12400f and 32GB of ddr4, 2.5TB total storage. Plenty for codes, games and simple game development.
-                    </p>
-                    <div class="flex space-x-4">
-                        <div class="text-center">
-                            <div class="text-3xl font-bold text-blue-600">3</div>
-                            <div class="text-gray-600">Projects</div>
-                        </div>
-                        <div class="text-center">
-                            <div class="text-3xl font-bold text-blue-600">2</div>
-                            <div class="text-gray-600">Years</div>
-                        </div>
-                        <div class="text-center">
-                            <div class="text-3xl font-bold text-blue-600">1</div>
-                            <div class="text-gray-600">Client(s)</div>
-                        </div>
-                    </div>
-                </div>
-                <!-- <div class="fade-in">
-                    <div class="bg-gradient-to-br from-blue-100 to-purple-100 p-8 rounded-2xl">
-                        <div class="text-8xl mb-4">Test</div>
-                        <h3 class="text-2xl font-semibold text-gray-800 mb-4">My Mission:</h3>
-                        <p class="text-gray-600">
-                            Prolly make my parents proud. Get married.
-                        </p>
-                    </div>
-                </div> -->
-            </div>
+<!-- About Section -->
+<section id="about" class="py-20 bg-white">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div class="fade-in">
+        <h2 class="text-4xl font-bold text-gray-800 mb-6">About Me</h2>
+        <p id="aboutText" class="text-gray-600 mb-6 leading-relaxed">
+          I'm a 14 Years old student from Indonesia. I learn pretty much everything I find interesting. I'm learning Python, HTML and CSS. Also, I'm currently learning how to develop a game!
+        </p>
+        <p id="aboutExtra" class="text-gray-600 mb-8 leading-relaxed">
+          When I'm not coding, you'll probably find me playing games. Oh and I do play roblox.
+          I'm using a GTX 1650 with a I5 12400f and 32GB of ddr4, 2.5TB total storage. Plenty for codes, games and simple game development.
+        </p>
+        <div class="flex space-x-4">
+          <div class="text-center">
+            <div class="text-3xl font-bold text-blue-600">3</div>
+            <div class="text-gray-600">Projects</div>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl font-bold text-blue-600">2</div>
+            <div class="text-gray-600">Years</div>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl font-bold text-blue-600">1</div>
+            <div class="text-gray-600">Client(s)</div>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="py-20 bg-gray-50">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="text-center mb-16 fade-in">
-                <h2 class="text-4xl font-bold text-gray-800 mb-4">What I use:</h2>
-                <p class="text-gray-600 max-w-2xl mx-auto">
-                    Here's what I usually use for my projects.
-                </p>
+<!-- Skills Section -->
+<section id="skills" class="py-20 bg-gray-50">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="text-center mb-16 fade-in">
+      <h2 class="text-4xl font-bold text-gray-800 mb-4">What I use:</h2>
+      <p class="text-gray-600 max-w-2xl mx-auto">Here's what I usually use for my projects.</p>
+    </div>
+    <div class="grid md:grid-cols-2 gap-12">
+      <div class="fade-in">
+        <h3 class="text-2xl font-semibold text-gray-800 mb-8">Languages:</h3>
+        <div class="space-y-6">
+          <div>
+            <div class="flex justify-between mb-2"><span class="text-gray-700">Python</span><span class="text-gray-500">90%</span></div>
+            <div class="bg-gray-200 rounded-full h-3">
+              <div class="skill-bar bg-blue-600 h-3 rounded-full" style="width: 0%" data-width="90%"></div>
             </div>
-            
-            <div class="grid md:grid-cols-2 gap-12">
-                <div class="fade-in">
-                    <h3 class="text-2xl font-semibold text-gray-800 mb-8">Languages:</h3>
-                    <div class="space-y-6">
-                        <div>
-                            <div class="flex justify-between mb-2">
-                                <span class="text-gray-700">Python</span>
-                                <span class="text-gray-500">90%</span>
-                            </div>
-                            <div class="bg-gray-200 rounded-full h-3">
-                                <div class="skill-bar bg-blue-600 h-3 rounded-full" style="width: 0%" data-width="90%"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between mb-2">
-                                <span class="text-gray-700">Python again</span>
-                                <span class="text-gray-500">85%</span>
-                            </div>
-                            <div class="bg-gray-200 rounded-full h-3">
-                                <div class="skill-bar bg-green-600 h-3 rounded-full" style="width: 0%" data-width="85%"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between mb-2">
-                                <span class="text-gray-700">HTML</span>
-                                <span class="text-gray-500">80%</span>
-                            </div>
-                            <div class="bg-gray-200 rounded-full h-3">
-                                <div class="skill-bar bg-purple-600 h-3 rounded-full" style="width: 0%" data-width="80%"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between mb-2">
-                                <span class="text-gray-700">CSS</span>
-                                <span class="text-gray-500">75%</span>
-                            </div>
-                            <div class="bg-gray-200 rounded-full h-3">
-                                <div class="skill-bar bg-pink-600 h-3 rounded-full" style="width: 0%" data-width="75%"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="fade-in">
-                    <h3 class="text-2xl font-semibold text-gray-800 mb-8">Tools & Technologies</h3>
-                    <div class="grid grid-cols-2 gap-4">
-                        <!-- <div class="bg-white p-4 rounded-lg shadow-sm text-center card-hover">
-                            <div class="text-3xl mb-2">⚛️</div>
-                            <div class="font-semibold">ChatGPT</div>
-                        </div> -->
-                        <div class="bg-white p-4 rounded-lg shadow-sm text-center card-hover">
-                            <div class="text-3xl mb-2">🔵</div>
-                            <div class="font-semibold">Visual Studio Code</div>
-                        </div>
-                        <div class="bg-white p-4 rounded-lg shadow-sm text-center card-hover">
-                            <div class="text-3xl mb-2">🐍</div>
-                            <div class="font-semibold">Python</div>
-                        </div>
-                        <div class="bg-white p-4 rounded-lg shadow-sm text-center card-hover">
-                            <div class="text-3xl mb-2">🎨</div>
-                            <div class="font-semibold">Canva</div>
-                        </div>
-                        <!-- <div class="bg-white p-4 rounded-lg shadow-sm text-center card-hover">
-                            <div class="text-3xl mb-2">🗄️</div>
-                            <div class="font-semibold">MongoDB</div>
-                        </div>
-                        <div class="bg-white p-4 rounded-lg shadow-sm text-center card-hover">
-                            <div class="text-3xl mb-2">☁️</div>
-                            <div class="font-semibold">AWS</div> -->
-                        </div>
-                    </div>
-                </div>
+          </div>
+          <div>
+            <div class="flex justify-between mb-2"><span class="text-gray-700">Python again</span><span class="text-gray-500">85%</span></div>
+            <div class="bg-gray-200 rounded-full h-3">
+              <div class="skill-bar bg-green-600 h-3 rounded-full" style="width: 0%" data-width="85%"></div>
             </div>
+          </div>
+          <div>
+            <div class="flex justify-between mb-2"><span class="text-gray-700">HTML</span><span class="text-gray-500">80%</span></div>
+            <div class="bg-gray-200 rounded-full h-3">
+              <div class="skill-bar bg-purple-600 h-3 rounded-full" style="width: 0%" data-width="80%"></div>
+            </div>
+          </div>
+          <div>
+            <div class="flex justify-between mb-2"><span class="text-gray-700">CSS</span><span class="text-gray-500">75%</span></div>
+            <div class="bg-gray-200 rounded-full h-3">
+              <div class="skill-bar bg-pink-600 h-3 rounded-full" style="width: 0%" data-width="75%"></div>
+            </div>
+          </div>
         </div>
-    </section>
+      </div>
+      <div class="fade-in">
+        <h3 class="text-2xl font-semibold text-gray-800 mb-8">Tools & Technologies</h3>
+        <div class="grid grid-cols-2 gap-4">
+          <div class="bg-white p-4 rounded-lg shadow-sm text-center card-hover"><div class="text-3xl mb-2">🔵</div><div class="font-semibold">Visual Studio Code</div></div>
+          <div class="bg-white p-4 rounded-lg shadow-sm text-center card-hover"><div class="text-3xl mb-2">🐍</div><div class="font-semibold">Python</div></div>
+          <div class="bg-white p-4 rounded-lg shadow-sm text-center card-hover"><div class="text-3xl mb-2">🎨</div><div class="font-semibold">Canva</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Projects Section -->
+<!-- Projects Section -->
 <section id="projects" class="py-20 bg-white">
   <div class="max-w-6xl mx-auto px-6">
     <div class="text-center mb-16 fade-in">
       <h2 class="text-4xl font-bold text-gray-800 mb-4">My Projects!</h2>
-      <p class="text-gray-600 max-w-2xl mx-auto">
-        Demonstrations of my projects:
-      </p>
+      <p class="text-gray-600 max-w-2xl mx-auto">Demonstrations of my projects:</p>
     </div>
-
-    <!-- Grid with 6 projects -->
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-      <!-- Project 1 -->
       <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover fade-in">
         <div class="h-48">
           <img src="https://files.catbox.moe/mph20b.png" alt="kivotos" class="w-full h-full object-cover">
@@ -240,8 +197,6 @@
           </div>
         </div>
       </div>
-
-      <!-- Project 2 -->
       <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover fade-in">
         <div class="h-48">
           <img src="https://files.catbox.moe/jf2928.png" alt="Task Manager" class="w-full h-full object-cover">
@@ -256,165 +211,103 @@
           </div>
           <div class="flex space-x-4">
             <a href="https://discord.gg/eVJMc6TDeU" class="text-blue-600 hover:underline font-semibold">Live Demo</a>
-            <!-- <a href="https://docs.google.com/document/d/1ULgl_jWvXAHAcXD4JXpPWr8FpwhHMhZD0caLg1dK8q0/edit?usp=sharing" class="text-gray-600 hover:underline font-semibold">Docs</a> -->
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </section>
 
-    <!-- Contact Section -->
+<!-- Contact Section -->
 <section id="contact" class="py-20 bg-gray-50">
   <div class="max-w-4xl mx-auto px-6">
     <div class="text-center mb-16 fade-in">
       <h2 class="text-4xl font-bold text-gray-800 mb-4">Contact Me</h2>
-      <p class="text-gray-600 max-w-2xl mx-auto">
-        Feel free to reach out to me through any of the platforms below! Though I'm most active in Discord.
-        (Clickable)
-      </p>
+      <p class="text-gray-600 max-w-2xl mx-auto">Feel free to reach out to me through any of the platforms below! Though I'm most active in Discord. (Clickable)</p>
     </div>
-
     <div class="grid md:grid-cols-2 gap-8">
-      
-      <!-- Social Block -->
-
-      <!-- GitHub -->
-      <a href="https://github.com/SSection12" target="_blank" 
-         class="flex items-center p-4 bg-white shadow-md rounded-lg hover:shadow-lg transition fade-in">
+      <a href="https://github.com/SSection12" target="_blank" class="flex items-center p-4 bg-white shadow-md rounded-lg hover:shadow-lg transition fade-in">
         <img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" alt="GitHub Icon" class="w-12 h-12 mr-4">
-        <div>
-          <div class="font-semibold text-gray-800">GitHub</div>
-          <div class="text-gray-600">github.com/SSection12</div>
-        </div>
+        <div><div class="font-semibold text-gray-800">GitHub</div><div class="text-gray-600">github.com/SSection12</div></div>
       </a>
-
-      <!-- TikTok -->
-      <a href="https://www.tiktok.com/@ssection12?is_from_webapp=1&sender_device=pc" target="_blank" 
-         class="flex items-center p-4 bg-white shadow-md rounded-lg hover:shadow-lg transition fade-in">
+      <a href="https://www.tiktok.com/@ssection12?is_from_webapp=1&sender_device=pc" target="_blank" class="flex items-center p-4 bg-white shadow-md rounded-lg hover:shadow-lg transition fade-in">
         <img src="https://files.catbox.moe/whozh8.png" alt="LinkedIn Icon" class="w-12 h-12 mr-4">
-        <div>
-          <div class="font-semibold text-gray-800">TikTok</div>
-          <div class="text-gray-600">tiktok.com/@ssection12</div>
-        </div>
+        <div><div class="font-semibold text-gray-800">TikTok</div><div class="text-gray-600">tiktok.com/@ssection12</div></div>
       </a>
-
-      <!-- Roblox -->
-      <a href="https://www.roblox.com/users/1416981575/profile" target="_blank" 
-         class="flex items-center p-4 bg-white shadow-md rounded-lg hover:shadow-lg transition fade-in">
+      <a href="https://www.roblox.com/users/1416981575/profile" target="_blank" class="flex items-center p-4 bg-white shadow-md rounded-lg hover:shadow-lg transition fade-in">
         <img src="https://files.catbox.moe/rc5du9.png" alt="Twitter Icon" class="w-12 h-12 mr-4">
-        <div>
-          <div class="font-semibold text-gray-800">Roblox</div>
-          <div class="text-gray-600">@powerindo8763</div>
-        </div>
+        <div><div class="font-semibold text-gray-800">Roblox</div><div class="text-gray-600">@powerindo8763</div></div>
       </a>
-
-      <!-- Discord -->
-      <a href="https://discord.com/users/738683175709966376" target="_blank" 
-         class="flex items-center p-4 bg-white shadow-md rounded-lg hover:shadow-lg transition fade-in">
+      <a href="https://discord.com/users/738683175709966376" target="_blank" class="flex items-center p-4 bg-white shadow-md rounded-lg hover:shadow-lg transition fade-in">
         <img src="https://cdn-icons-png.flaticon.com/512/5968/5968756.png" alt="Discord Icon" class="w-12 h-12 mr-4">
-        <div>
-          <div class="font-semibold text-gray-800">Discord</div>
-          <div class="text-gray-600">section12</div>
-        </div>
+        <div><div class="font-semibold text-gray-800">Discord</div><div class="text-gray-600">section12</div></div>
       </a>
-
     </div>
   </div>
 </section>
 
+<!-- Footer -->
+<footer class="bg-gray-800 text-white py-12">
+  <div class="max-w-6xl mx-auto px-6 text-center">
+    <div class="text-2xl font-bold mb-4">𝓢𝓢𝓮𝓬𝓽𝓲𝓸𝓷</div>
+    <p class="text-gray-400 mb-6">𝐿𝑒𝒶𝓇𝓃𝒾𝓃𝑔 𝓃𝑒𝓌 𝓉𝒽𝒾𝓃𝑔𝓈 𝑒𝓋𝑒𝓇𝓎𝒹𝒶𝓎. 𝒦𝑒𝑒𝓅 𝓊𝓅 𝑜𝓇 𝒾 𝓂𝒾𝑔𝒽𝓉 𝒷𝑒 𝒷𝑒𝓉𝓉𝑒𝓇 𝓉𝒽𝒶𝓃 𝓎𝑜𝓊.</p>
+    <div class="border-t border-gray-700 pt-6">
+      <p class="text-gray-400">&copy; 𝟤𝟘𝟤𝟜 𝒮𝒮𝑒𝒸𝓉𝒾𝓸𝓷. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
 
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-12">
-        <div class="max-w-6xl mx-auto px-6 text-center">
-            <div class="text-2xl font-bold mb-4">𝓢𝓢𝓮𝓬𝓽𝓲𝓸𝓷</div>
-            <p class="text-gray-400 mb-6">𝐿𝑒𝒶𝓇𝓃𝒾𝓃𝑔 𝓃𝑒𝓌 𝓉𝒽𝒾𝓃𝑔𝓈 𝑒𝓋𝑒𝓇𝓎𝒹𝒶𝓎. 𝒦𝑒𝑒𝓅 𝓊𝓅 𝑜𝓇 𝒾 𝓂𝒾𝑔𝒽𝓉 𝒷𝑒 𝒷𝑒𝓉𝓉𝑒𝓇 𝓉𝒽𝒶𝓃 𝓎𝑜𝓊.</p>
-            <div class="border-t border-gray-700 pt-6">
-                <p class="text-gray-400">&copy; 𝟤𝟢𝟤𝟦 𝒮𝒮𝑒𝒸𝓉𝒾𝑜𝓃. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+<script>
+// Smooth scrolling
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
 
-    <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
+// Fade-in animation
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
-        // Fade in animation on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
+// Animate skill bars
+const skillObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const skillBars = entry.target.querySelectorAll('.skill-bar');
+      skillBars.forEach(bar => {
+        const width = bar.getAttribute('data-width');
+        setTimeout(() => bar.style.width = width, 300);
+      });
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
-        });
+const skillsSection = document.querySelector('#skills');
+if (skillsSection) skillObserver.observe(skillsSection);
 
-        // Animate skill bars when they come into view
-        const skillObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const skillBars = entry.target.querySelectorAll('.skill-bar');
-                    skillBars.forEach(bar => {
-                        const width = bar.getAttribute('data-width');
-                        setTimeout(() => {
-                            bar.style.width = width;
-                        }, 300);
-                    });
-                }
-            });
-        }, observerOptions);
+// Mobile menu alert
+document.getElementById('mobile-menu').addEventListener('click', () => {
+  alert('Mobile menu would open here in a full implementation!');
+});
 
-        const skillsSection = document.querySelector('#skills');
-        if (skillsSection) {
-            skillObserver.observe(skillsSection);
-        }
+// Typing effect (runs only once)
+const typingEl = document.getElementById('typing');
+const heroText = "Learns everything he wants, And gets it done.";
+let hi = 0;
+function typeHero() {
+  typingEl.textContent = heroText.slice(0, hi++);
+  if (hi <= heroText.length) { 
+    setTimeout(typeHero, 100); 
+  } 
+  // stops automatically when done
+}
+window.addEventListener('load', typeHero);
+</script>
 
-        // Mobile menu toggle
-        const mobileMenuBtn = document.getElementById('mobile-menu');
-        const nav = document.querySelector('nav');
-        
-        mobileMenuBtn.addEventListener('click', () => {
-            // This would toggle a mobile menu in a real implementation
-            alert('Mobile menu would open here in a full implementation!');
-        });
-
-        // Form submission handler
-        function handleSubmit(event) {
-            event.preventDefault();
-            const formData = new FormData(event.target);
-            const name = formData.get('name') || event.target.querySelector('input[type="text"]').value;
-            const email = formData.get('email') || event.target.querySelector('input[type="email"]').value;
-            const message = formData.get('message') || event.target.querySelector('textarea').value;
-            
-            // Simulate form submission
-            alert(`Thank you ${name}! Your message has been received. I'll get back to you at ${email} soon!`);
-            event.target.reset();
-        }
-
-        // Add some initial animations
-        window.addEventListener('load', () => {
-            document.querySelector('#home .fade-in').classList.add('visible');
-        });
-    </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97bd6bfb05face19',t:'MTc1NzMyMzc3MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</body>
 </html>

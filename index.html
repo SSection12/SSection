@@ -1,314 +1,600 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>𝕊𝕊𝕖𝕔𝕥𝕚𝕠𝕟 - 𝒫𝑜𝓇𝓉𝑜𝒻𝑜𝓁𝒾𝑜</title>
-<link rel="icon" type="image/png" href="https://files.catbox.moe/wn201c.png">
-<script src="https://cdn.tailwindcss.com"></script>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-body { font-family: 'Inter', sans-serif; }
-
-.gradient-bg { 
-  background: url('https://files.catbox.moe/1tyxyt.png') no-repeat center center; 
-  background-size: cover;
-  position: relative;
-}
-.gradient-bg::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0,0,0,0.4);
-  z-index: 0;
-}
-.gradient-bg > div { position: relative; z-index: 1; }
-
-.card-hover { transition: transform 0.3s ease, box-shadow 0.3s ease; }
-.card-hover:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
-.skill-bar { transition: width 1s ease-in-out; }
-.fade-in { opacity: 0; transform: translateY(20px); transition: all 0.6s ease; }
-.fade-in.visible { opacity: 1; transform: translateY(0); }
-
-/* Typing animation */
-.typing-container {
-  display: inline-block;
-  border-right: 4px solid white;
-  white-space: nowrap;
-  overflow: hidden;
-  font-weight: 500;
-}
-.typing-container.about { border-right-color: black; }
-@keyframes blinkCursor {
-  0%, 49% { border-color: white; }
-  50%, 100% { border-color: transparent; }
-}
-.typing-container.blink { animation: blinkCursor 0.8s infinite; }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="only dark">
+    <title>Your Portfolio - Developer & Creator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <style>
+        :root {
+            color-scheme: only dark;
+            --gold: #FFD700;
+            --dark-bg: #000000;
+            --card-bg: #0f0f0f;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif !important;
+            background: #000000 !important;
+            color: #f8f8f8 !important;
+            overflow-x: hidden;
+        }
+        
+        .font-cinzel {
+            font-family: 'Cinzel', serif;
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #1a1a1a;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--gold);
+            border-radius: 4px;
+        }
+        
+        /* Background orbs */
+        .bg-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.1;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .bg-orb:nth-child(1) {
+            width: 300px;
+            height: 300px;
+            background: var(--gold);
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+        
+        .bg-orb:nth-child(2) {
+            width: 200px;
+            height: 200px;
+            background: #4f46e5;
+            top: 60%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+        
+        .bg-orb:nth-child(3) {
+            width: 250px;
+            height: 250px;
+            background: var(--gold);
+            bottom: 10%;
+            left: 50%;
+            animation-delay: 4s;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+        
+        /* Typing animation */
+        .typing-text {
+            border-right: 2px solid var(--gold);
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 50% { border-color: var(--gold); }
+            51%, 100% { border-color: transparent; }
+        }
+        
+        /* Glow effects */
+        .glow-gold {
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+        }
+        
+        .glow-gold:hover {
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+        }
+        
+        /* Progress bars */
+        .progress-bar {
+            background: linear-gradient(90deg, var(--gold) 0%, #ffd700aa 100%);
+            animation: fillBar 2s ease-out;
+        }
+        
+        @keyframes fillBar {
+            from { width: 0%; }
+        }
+        
+        /* Card hover effects */
+        .hover-scale {
+            transition: all 0.3s ease;
+        }
+        
+        .hover-scale:hover {
+            transform: translateY(-10px) scale(1.05);
+        }
+        
+        /* Mobile menu */
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+        
+        /* Preloader */
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--dark-bg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+        
+        .loader {
+            width: 50px;
+            height: 50px;
+            border: 3px solid #333;
+            border-top: 3px solid var(--gold);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
 </head>
-<body class="bg-gray-50">
+<body class="bg-black text-white" style="background:#000000 !important; color:#f8f8f8 !important;">
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="loader"></div>
+    </div>
 
-<!-- Navigation -->
-<nav class="fixed top-0 w-full bg-white/90 backdrop-blur-sm z-50 shadow-sm">
-  <div class="max-w-6xl mx-auto px-6 py-4">
-    <div class="flex justify-between items-center">
-      <div class="text-2xl font-bold text-gray-800">𝕊𝕊</div>
-      <div class="hidden md:flex space-x-8">
-        <a href="#home" class="text-gray-600 hover:text-blue-600 transition-colors">Home</a>
-        <a href="#about" class="text-gray-600 hover:text-blue-600 transition-colors">About</a>
-        <a href="#skills" class="text-gray-600 hover:text-blue-600 transition-colors">Skills</a>
-        <a href="#projects" class="text-gray-600 hover:text-blue-600 transition-colors">Projects</a>
-        <a href="#contact" class="text-gray-600 hover:text-blue-600 transition-colors">Contact</a>
-      </div>
-      <button id="mobile-menu" class="md:hidden text-gray-600">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-        </svg>
-      </button>
+    <!-- Background orbs -->
+    <div class="fixed inset-0 pointer-events-none">
+        <div class="bg-orb"></div>
+        <div class="bg-orb"></div>
+        <div class="bg-orb"></div>
     </div>
-  </div>
-</nav>
 
-<!-- Hero Section -->
-<section id="home" class="gradient-bg min-h-screen flex items-center justify-center text-white">
-  <div class="text-center px-6 fade-in">
-    <div class="w-32 h-32 mx-auto mb-8 rounded-full bg-white/20 flex items-center justify-center overflow-hidden">
-      <img src="https://files.catbox.moe/wn201c.png" 
-           alt="Profile" class="w-full h-full object-cover">
-    </div>
-    <h1 class="text-5xl md:text-7xl font-bold mb-6">𝓢𝓢𝓮𝓬𝓽𝓲𝓸𝓷</h1>
-    <p class="text-xl md:text-2xl mb-8 text-white/90">Student from Indonesia.</p>
-    <p class="text-lg mb-12 max-w-2xl mx-auto text-white/80">
-      <span id="typing" class="typing-container blink"></span>
-    </p>
-    <div class="space-x-4">
-      <a href="#projects" class="bg-white text-purple-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors">View My Work</a>
-      <a href="#contact" class="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-purple-600 transition-colors">Contact me</a>
-    </div>
-  </div>
-</section>
-
-<!-- About Section -->
-<section id="about" class="py-20 bg-white">
-  <div class="max-w-6xl mx-auto px-6">
-    <div class="grid md:grid-cols-2 gap-12 items-center">
-      <div class="fade-in">
-        <h2 class="text-4xl font-bold text-gray-800 mb-6">About Me</h2>
-        <p id="aboutText" class="text-gray-600 mb-6 leading-relaxed">
-          I'm a 14 Years old student from Indonesia. I learn pretty much everything I find interesting. I'm learning Python, HTML and CSS. Also, I'm currently learning how to develop a game!
-        </p>
-        <p id="aboutExtra" class="text-gray-600 mb-8 leading-relaxed">
-          When I'm not coding, you'll probably find me playing games. Oh and I do play roblox.
-          I'm using a GTX 1650 with a I5 12400f and 32GB of ddr4, 2.5TB total storage. Plenty for codes, games and simple game development.
-        </p>
-        <div class="flex space-x-4">
-          <div class="text-center">
-            <div class="text-3xl font-bold text-blue-600">3</div>
-            <div class="text-gray-600">Projects</div>
-          </div>
-          <div class="text-center">
-            <div class="text-3xl font-bold text-blue-600">2</div>
-            <div class="text-gray-600">Years</div>
-          </div>
-          <div class="text-center">
-            <div class="text-3xl font-bold text-blue-600">1</div>
-            <div class="text-gray-600">Client(s)</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Skills Section -->
-<section id="skills" class="py-20 bg-gray-50">
-  <div class="max-w-6xl mx-auto px-6">
-    <div class="text-center mb-16 fade-in">
-      <h2 class="text-4xl font-bold text-gray-800 mb-4">What I use:</h2>
-      <p class="text-gray-600 max-w-2xl mx-auto">Here's what I usually use for my projects.</p>
-    </div>
-    <div class="grid md:grid-cols-2 gap-12">
-      <div class="fade-in">
-        <h3 class="text-2xl font-semibold text-gray-800 mb-8">Languages:</h3>
-        <div class="space-y-6">
-          <div>
-            <div class="flex justify-between mb-2"><span class="text-gray-700">Python</span><span class="text-gray-500">90%</span></div>
-            <div class="bg-gray-200 rounded-full h-3">
-              <div class="skill-bar bg-blue-600 h-3 rounded-full" style="width: 0%" data-width="90%"></div>
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-black/80 backdrop-blur-md z-50 border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="font-cinzel text-xl font-bold text-yellow-400">SSection</div>
+                
+                <!-- Desktop menu -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link hover:text-yellow-400 transition-colors">Home</a>
+                    <a href="#about" class="nav-link hover:text-yellow-400 transition-colors">About</a>
+                    <a href="#skills" class="nav-link hover:text-yellow-400 transition-colors">Skills</a>
+                    <a href="#projects" class="nav-link hover:text-yellow-400 transition-colors">Projects</a>
+                    <a href="#contact" class="nav-link hover:text-yellow-400 transition-colors">Contact</a>
+                </div>
+                
+                <!-- Mobile menu button -->
+                <button class="md:hidden text-white" id="mobile-menu-btn">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
             </div>
-          </div>
-          <div>
-            <div class="flex justify-between mb-2"><span class="text-gray-700">Python again</span><span class="text-gray-500">85%</span></div>
-            <div class="bg-gray-200 rounded-full h-3">
-              <div class="skill-bar bg-green-600 h-3 rounded-full" style="width: 0%" data-width="85%"></div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div class="mobile-menu fixed top-0 right-0 h-full w-64 bg-black/95 backdrop-blur-md md:hidden" id="mobile-menu">
+            <div class="flex flex-col p-6 space-y-6 mt-16">
+                <a href="#home" class="nav-link text-lg hover:text-yellow-400 transition-colors">Home</a>
+                <a href="#about" class="nav-link text-lg hover:text-yellow-400 transition-colors">About</a>
+                <a href="#skills" class="nav-link text-lg hover:text-yellow-400 transition-colors">Skills</a>
+                <a href="#projects" class="nav-link text-lg hover:text-yellow-400 transition-colors">Projects</a>
+                <a href="#contact" class="nav-link text-lg hover:text-yellow-400 transition-colors">Contact</a>
             </div>
-          </div>
-          <div>
-            <div class="flex justify-between mb-2"><span class="text-gray-700">HTML</span><span class="text-gray-500">80%</span></div>
-            <div class="bg-gray-200 rounded-full h-3">
-              <div class="skill-bar bg-purple-600 h-3 rounded-full" style="width: 0%" data-width="80%"></div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center px-4 relative">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+            <div class="text-center lg:text-left" data-aos="fade-right">
+                <h1 class="font-cinzel text-5xl md:text-7xl font-bold mb-4">
+                    <span class="text-yellow-400">Malikpo</span> / <span class="text-white">SSection</span>
+                </h1>
+                <div class="text-xl md:text-2xl mb-6 h-8">
+                    <span class="typing-text" id="typing-text"></span>
+                </div>
+                <p class="text-gray-300 text-lg mb-8 max-w-lg">
+                    Young developer doing something just to pass time.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                    <a href="#projects" class="bg-yellow-400 text-black px-8 py-3 rounded-lg font-semibold hover:bg-yellow-300 transition-all hover-scale glow-gold text-center">
+                        View My Work
+                    </a>
+                    <a href="#contact" class="border border-yellow-400 text-yellow-400 px-8 py-3 rounded-lg font-semibold hover:bg-yellow-400 hover:text-black transition-all hover-scale text-center">
+                        Contact Me
+                    </a>
+                </div>
             </div>
-          </div>
-          <div>
-            <div class="flex justify-between mb-2"><span class="text-gray-700">CSS</span><span class="text-gray-500">75%</span></div>
-            <div class="bg-gray-200 rounded-full h-3">
-              <div class="skill-bar bg-pink-600 h-3 rounded-full" style="width: 0%" data-width="75%"></div>
+            
+            <!-- Profile Card -->
+            <div class="flex justify-center lg:justify-end" data-aos="fade-left">
+              <div class="relative z-10 w-full max-w-md mx-auto">
+                <div class="absolute -top-6 -left-6 w-64 h-64 bg-yellow-400/20 rounded-full filter blur-3xl opacity-50"></div>
+                <div class="relative z-10 rounded-2xl overflow-hidden border border-yellow-400/20 shadow-2xl hover-scale glow-gold">
+                  <img src="https://files.catbox.moe/wn201c.png" alt="Profile" class="w-full h-auto">
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent"></div>
+                  <div class="absolute bottom-0 left-0 p-6">
+                    <div class="text-yellow-400 text-sm font-medium mb-1">Currently Learning</div>
+                    <h3 class="text-2xl font-bold text-white">Game Development</h3>
+                    <p class="text-gray-300 text-sm mt-1">Creating interactive experiences</p>
+                  </div>
+                </div>
+                <div class="absolute -bottom-6 -right-6 w-40 h-40 bg-yellow-400/10 rounded-full filter blur-3xl opacity-50"></div>
+              </div>
             </div>
-          </div>
         </div>
-      </div>
-      <div class="fade-in">
-        <h3 class="text-2xl font-semibold text-gray-800 mb-8">Tools & Technologies</h3>
-        <div class="grid grid-cols-2 gap-4">
-          <div class="bg-white p-4 rounded-lg shadow-sm text-center card-hover"><div class="text-3xl mb-2">🔵</div><div class="font-semibold">Visual Studio Code</div></div>
-          <div class="bg-white p-4 rounded-lg shadow-sm text-center card-hover"><div class="text-3xl mb-2">🐍</div><div class="font-semibold">Python</div></div>
-          <div class="bg-white p-4 rounded-lg shadow-sm text-center card-hover"><div class="text-3xl mb-2">🎨</div><div class="font-semibold">Canva</div></div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 px-4">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="font-cinzel text-4xl md:text-5xl font-bold text-center mb-16" data-aos="fade-up">
+                About <span class="text-yellow-400">Me</span>
+            </h2>
+            
+            <div class="grid lg:grid-cols-2 gap-12 mb-16">
+                <div data-aos="fade-right">
+                    <h3 class="text-2xl md:text-3xl font-bold text-light font-heading mb-6">
+                        I'm <span class="text-yellow-400 font-heading">SSection</span>, a passionate student and developer from Indonesia
+                    </h3>
+                    <p class="text-gray-300 text-lg leading-relaxed mb-6">
+                        I'm a 14y/o student from Indonesia with curiosity for technology and programming.
+                    </p>
+                    <p class="text-gray-300 text-lg leading-relaxed">
+                       To be honest. I have no idea what to put here... I code, I play, I do commision, I sleep.
+                    </p>
+                </div>
+                
+                <!-- PC Specs -->
+                <div data-aos="fade-left">
+                    <div class="bg-black/80 backdrop-blur-md p-6 rounded-2xl border border-gray-800 hover-scale">
+                        <h3 class="text-xl font-semibold mb-4 text-yellow-400">My Setup</h3>
+                        <div class="space-y-3 text-sm">
+                            <div class="flex justify-between">
+                                <span class="text-gray-400">CPU:</span>
+                                <span>Intel Core i5-12400F</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-400">GPU:</span>
+                                <span>Nvidia GTX 1650</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-400">RAM:</span>
+                                <span>32GB DDR4</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-400">Storage:</span>
+                                <span>500GB Kingston NV2</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-400">Storage 2:</span>
+                                <span>2TB Seagate Barracuda</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-400">Monitor:</span>
+                                <span>24" Odyssey G3 165Hz 1ms FHD 1080p</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Stats -->
+            <div class="grid md:grid-cols-3 gap-8" data-aos="fade-up">
+                <div class="bg-black/80 backdrop-blur-md p-8 rounded-2xl border border-gray-800 text-center hover-scale glow-gold">
+                    <div class="text-4xl font-bold text-yellow-400 mb-2">15+</div>
+                    <div class="text-gray-400">Projects</div>
+                </div>
+                <div class="bg-black/80 backdrop-blur-md p-8 rounded-2xl border border-gray-800 text-center hover-scale glow-gold">
+                    <div class="text-4xl font-bold text-yellow-400 mb-2">1</div>
+                    <div class="text-gray-400">Year(s) Experience</div>
+                </div>
+                <div class="bg-black/80 backdrop-blur-md p-8 rounded-2xl border border-gray-800 text-center hover-scale glow-gold">
+                    <div class="text-4xl font-bold text-yellow-400 mb-2">1</div>
+                    <div class="text-gray-400">Happy SSection</div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- Projects Section -->
-<section id="projects" class="py-20 bg-white">
-  <div class="max-w-6xl mx-auto px-6">
-    <div class="text-center mb-16 fade-in">
-      <h2 class="text-4xl font-bold text-gray-800 mb-4">My Projects!</h2>
-      <p class="text-gray-600 max-w-2xl mx-auto">Demonstrations of my projects:</p>
-    </div>
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-      <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover fade-in">
-        <div class="h-48">
-          <img src="https://files.catbox.moe/mph20b.png" alt="kivotos" class="w-full h-full object-cover">
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 px-4 bg-black/50">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="font-cinzel text-4xl md:text-5xl font-bold text-center mb-16" data-aos="fade-up">
+                My <span class="text-yellow-400">Skills</span>
+            </h2>
+            
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- Programming Languages -->
+                <div data-aos="fade-right">
+                    <h3 class="text-2xl font-semibold mb-8 text-yellow-400">Programming Languages</h3>
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span>Python</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="bg-gray-700 rounded-full h-3">
+                                <div class="progress-bar h-3 rounded-full" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span>HTML/CSS</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="bg-gray-700 rounded-full h-3">
+                                <div class="progress-bar h-3 rounded-full" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span>JavaScript</span>
+                                <span>75%</span>
+                            </div>
+                            <div class="bg-gray-700 rounded-full h-3">
+                                <div class="progress-bar h-3 rounded-full" style="width: 75%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tools & Technologies -->
+                <div data-aos="fade-left">
+                    <h3 class="text-2xl font-semibold mb-8 text-yellow-400">Tools & Technologies</h3>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-black/80 backdrop-blur-md p-4 rounded-xl border border-gray-800 hover-scale text-center">
+                            <div class="text-3xl mb-2">🐍</div>
+                            <div class="text-sm">Python</div>
+                        </div>
+                        <div class="bg-black/80 backdrop-blur-md p-4 rounded-xl border border-gray-800 hover-scale text-center">
+                            <div class="text-3xl mb-2">💻</div>
+                            <div class="text-sm">VS Code</div>
+                        </div>
+                        <div class="bg-black/80 backdrop-blur-md p-4 rounded-xl border border-gray-800 hover-scale text-center">
+                            <div class="text-3xl mb-2">🎨</div>
+                            <div class="text-sm">Canva</div>
+                        </div>
+                        <div class="bg-black/80 backdrop-blur-md p-4 rounded-xl border border-gray-800 hover-scale text-center">
+                            <div class="text-3xl mb-2">🔧</div>
+                            <div class="text-sm">Github</div>
+                        </div>
+                        <div class="bg-black/80 backdrop-blur-md p-4 rounded-xl border border-gray-800 hover-scale text-center">
+                            <div class="text-3xl mb-2">🌐</div>
+                            <div class="text-sm">Windsurf</div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="p-6">
-          <h3 class="text-xl font-semibold text-gray-800 mb-2">Project Kivotos</h3>
-          <p class="text-gray-600 mb-4">Project Kivotos is a massive Minecraft world-building project. Takes place in a city inside of Blue Archive. Currently recruiting builders!</p>
-          <div class="flex flex-wrap gap-2 mb-4">
-            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Java</span>
-            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">WorldEdit</span>
-            <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">GeyserMC</span>
-          </div>
-          <div class="flex space-x-4">
-            <a href="https://www.planetminecraft.com/project/blue-archive-kivotos" class="text-blue-600 hover:underline font-semibold">Demo</a>
-            <a href="https://discord.gg/eVJMc6TDeU" class="text-gray-600 hover:underline font-semibold">Join this Project!</a>
-          </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 px-4">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="font-cinzel text-4xl md:text-5xl font-bold text-center mb-16" data-aos="fade-up">
+                My <span class="text-yellow-400">Projects</span>
+            </h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="bg-black/80 backdrop-blur-md rounded-2xl border border-gray-800 overflow-hidden hover-scale glow-gold" data-aos="fade-up" data-aos-delay="100">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-3">Project Kivotos</h3>
+                        <p class="text-gray-400 mb-4">Project Kivotos is a massive Minecraft world-building project. Takes place in a city inside of Blue Archive. Currently recruiting builders!</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-yellow-400/20 text-yellow-400 px-3 py-1 rounded-full text-sm">Java</span>
+                            <span class="bg-blue-400/20 text-blue-400 px-3 py-1 rounded-full text-sm">WorldEdit</span>
+                            <span class="bg-green-400/20 text-green-400 px-3 py-1 rounded-full text-sm">GeyserMC</span>
+                        </div>
+                        <a href="https://www.planetminecraft.com/project/blue-archive-kivotos" class="block w-full bg-yellow-400 text-black py-2 rounded-lg font-semibold hover:bg-yellow-300 transition-colors text-center">View Demo</a>
+                        <a href="https://discord.gg/eVJMc6TDeU" class="block w-full mt-2 bg-yellow-400 text-black py-2 rounded-lg font-semibold hover:bg-yellow-300 transition-colors text-center">Join this Project!</a>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="bg-black/80 backdrop-blur-md rounded-2xl border border-gray-800 overflow-hidden hover-scale glow-gold" data-aos="fade-up" data-aos-delay="200">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-3">Rona & SSCA</h3>
+                        <p class="text-gray-400 mb-4">A custom discord bot with built in Artificial Intelligence.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-yellow-400/20 text-yellow-400 px-3 py-1 rounded-full text-sm">discord.py</span>
+                            <span class="bg-green-400/20 text-green-400 px-3 py-1 rounded-full text-sm">Gemini</span>
+                            <span class="bg-purple-400/20 text-purple-400 px-3 py-1 rounded-full text-sm">VS Code</span>
+                        </div>
+                        <a href="https://discord.gg/eVJMc6TDeU" class="block w-full bg-yellow-400 text-black py-2 rounded-lg font-semibold hover:bg-yellow-300 transition-colors text-center">
+                            View Demo
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                
+            </div>
         </div>
-      </div>
-      <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover fade-in">
-        <div class="h-48">
-          <img src="https://files.catbox.moe/jf2928.png" alt="Task Manager" class="w-full h-full object-cover">
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-4 bg-black/50">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="font-cinzel text-4xl md:text-5xl font-bold text-center mb-16" data-aos="fade-up">
+                Get In <span class="text-yellow-400">Touch</span>
+            </h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Discord -->
+                <a href="https://discord.com/users/738683175709966376" target="_blank" class="bg-black/80 backdrop-blur-md p-6 rounded-2xl border border-gray-800 hover-scale glow-gold text-center block flex flex-col items-center" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://cdn-icons-png.flaticon.com/512/5968/5968756.png" alt="Discord Icon" class="w-14 h-14 mb-4">
+                    <h3 class="text-lg font-semibold mb-2">Discord</h3>
+                    <p class="text-gray-400 text-sm">section12</p>
+                </a>
+                
+                <!-- GitHub -->
+                <a href="https://github.com/SSection12" target="_blank" class="bg-black/80 backdrop-blur-md p-6 rounded-2xl border border-gray-800 hover-scale glow-gold text-center block flex flex-col items-center" data-aos="fade-up" data-aos-delay="200">
+                    <img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" alt="GitHub Icon" class="w-14 h-14 mb-4">
+                    <h3 class="text-lg font-semibold mb-2">GitHub</h3>
+                    <p class="text-gray-400 text-sm">github.com/SSection12</p>
+                </a>
+                
+                <!-- Roblox -->
+                <a href="https://www.roblox.com/users/1416981575/profile" target="_blank" class="bg-black/80 backdrop-blur-md p-6 rounded-2xl border border-gray-800 hover-scale glow-gold text-center block flex flex-col items-center" data-aos="fade-up" data-aos-delay="300">
+                    <img src="https://files.catbox.moe/rc5du9.png" alt="Roblox Icon" class="w-14 h-14 mb-4">
+                    <h3 class="text-lg font-semibold mb-2">Roblox</h3>
+                    <p class="text-gray-400 text-sm">@powerindo8763</p>
+                </a>
+                
+                <!-- TikTok -->
+                <a href="https://www.tiktok.com/@ssection12?is_from_webapp=1&sender_device=pc" target="_blank" class="bg-black/80 backdrop-blur-md p-6 rounded-2xl border border-gray-800 hover-scale glow-gold text-center block flex flex-col items-center" data-aos="fade-up" data-aos-delay="400">
+                    <img src="https://files.catbox.moe/whozh8.png" alt="TikTok Icon" class="w-14 h-14 mb-4">
+                    <h3 class="text-lg font-semibold mb-2">TikTok</h3>
+                    <p class="text-gray-400 text-sm">@section12</p>
+                </a>
+            </div>
         </div>
-        <div class="p-6">
-          <h3 class="text-xl font-semibold text-gray-800 mb-2">Rona & SSCA</h3>
-          <p class="text-gray-600 mb-4">A custom discord bot with built in Artificial Intelligence.</p>
-          <div class="flex flex-wrap gap-2 mb-4">
-            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">discord.py</span>
-            <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm">Gemini</span>
-            <span class="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm">VS Code</span>
-          </div>
-          <div class="flex space-x-4">
-            <a href="https://discord.gg/eVJMc6TDeU" class="text-blue-600 hover:underline font-semibold">Live Demo</a>
-          </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 px-4 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto text-center">
+            <div class="font-cinzel text-2xl font-bold mb-2">SSection</div>
+            <p class="text-gray-400 italic">"Learning new things everyday. Keep up or I might be better than you"</p>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
+    </footer>
 
-<!-- Contact Section -->
-<section id="contact" class="py-20 bg-gray-50">
-  <div class="max-w-4xl mx-auto px-6">
-    <div class="text-center mb-16 fade-in">
-      <h2 class="text-4xl font-bold text-gray-800 mb-4">Contact Me</h2>
-      <p class="text-gray-600 max-w-2xl mx-auto">Feel free to reach out to me through any of the platforms below! Though I'm most active in Discord. (Clickable)</p>
-    </div>
-    <div class="grid md:grid-cols-2 gap-8">
-      <a href="https://github.com/SSection12" target="_blank" class="flex items-center p-4 bg-white shadow-md rounded-lg hover:shadow-lg transition fade-in">
-        <img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" alt="GitHub Icon" class="w-12 h-12 mr-4">
-        <div><div class="font-semibold text-gray-800">GitHub</div><div class="text-gray-600">github.com/SSection12</div></div>
-      </a>
-      <a href="https://www.tiktok.com/@ssection12?is_from_webapp=1&sender_device=pc" target="_blank" class="flex items-center p-4 bg-white shadow-md rounded-lg hover:shadow-lg transition fade-in">
-        <img src="https://files.catbox.moe/whozh8.png" alt="LinkedIn Icon" class="w-12 h-12 mr-4">
-        <div><div class="font-semibold text-gray-800">TikTok</div><div class="text-gray-600">tiktok.com/@ssection12</div></div>
-      </a>
-      <a href="https://www.roblox.com/users/1416981575/profile" target="_blank" class="flex items-center p-4 bg-white shadow-md rounded-lg hover:shadow-lg transition fade-in">
-        <img src="https://files.catbox.moe/rc5du9.png" alt="Twitter Icon" class="w-12 h-12 mr-4">
-        <div><div class="font-semibold text-gray-800">Roblox</div><div class="text-gray-600">@powerindo8763</div></div>
-      </a>
-      <a href="https://discord.com/users/738683175709966376" target="_blank" class="flex items-center p-4 bg-white shadow-md rounded-lg hover:shadow-lg transition fade-in">
-        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968756.png" alt="Discord Icon" class="w-12 h-12 mr-4">
-        <div><div class="font-semibold text-gray-800">Discord</div><div class="text-gray-600">section12</div></div>
-      </a>
-    </div>
-  </div>
-</section>
+    <script>
+        // Preloader
+        window.addEventListener('load', function() {
+            const preloader = document.getElementById('preloader');
+            preloader.style.opacity = '0';
+            setTimeout(() => {
+                preloader.style.display = 'none';
+            }, 500);
+        });
 
-<!-- Footer -->
-<footer class="bg-gray-800 text-white py-12">
-  <div class="max-w-6xl mx-auto px-6 text-center">
-    <div class="text-2xl font-bold mb-4">𝓢𝓢𝓮𝓬𝓽𝓲𝓸𝓷</div>
-    <p class="text-gray-400 mb-6">𝐿𝑒𝒶𝓇𝓃𝒾𝓃𝑔 𝓃𝑒𝓌 𝓉𝒽𝒾𝓃𝑔𝓈 𝑒𝓋𝑒𝓇𝓎𝒹𝒶𝓎. 𝒦𝑒𝑒𝓅 𝓊𝓅 𝑜𝓇 𝒾 𝓂𝒾𝑔𝒽𝓉 𝒷𝑒 𝒷𝑒𝓉𝓉𝑒𝓇 𝓉𝒽𝒶𝓃 𝓎𝑜𝓊.</p>
-    <div class="border-t border-gray-700 pt-6">
-      <p class="text-gray-400">&copy; 𝟤𝟘𝟤𝟜 𝒮𝒮𝑒𝒸𝓉𝒾𝓸𝓷. All rights reserved.</p>
-    </div>
-  </div>
-</footer>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
 
-<script>
-// Smooth scrolling
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
-    e.preventDefault();
-    const target = document.querySelector(this.getAttribute('href'));
-    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  });
-});
+        // Typing effect
+        const typingText = document.getElementById('typing-text');
+        const phrases = [
+            'Hobbyist Developer',
+            'Gaming Enthusiast',
+            'Tries new things',
+        ];
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
 
-// Fade-in animation
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
-}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+        function typeEffect() {
+            const currentPhrase = phrases[phraseIndex];
+            
+            if (isDeleting) {
+                typingText.textContent = currentPhrase.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typingText.textContent = currentPhrase.substring(0, charIndex + 1);
+                charIndex++;
+            }
 
-document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+            if (!isDeleting && charIndex === currentPhrase.length) {
+                setTimeout(() => isDeleting = true, 2000);
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                phraseIndex = (phraseIndex + 1) % phrases.length;
+            }
 
-// Animate skill bars
-const skillObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const skillBars = entry.target.querySelectorAll('.skill-bar');
-      skillBars.forEach(bar => {
-        const width = bar.getAttribute('data-width');
-        setTimeout(() => bar.style.width = width, 300);
-      });
-    }
-  });
-}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+            const typingSpeed = isDeleting ? 50 : 100;
+            setTimeout(typeEffect, typingSpeed);
+        }
 
-const skillsSection = document.querySelector('#skills');
-if (skillsSection) skillObserver.observe(skillsSection);
+        typeEffect();
 
-// Mobile menu alert
-document.getElementById('mobile-menu').addEventListener('click', () => {
-  alert('Mobile menu would open here in a full implementation!');
-});
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
 
-// Typing effect (runs only once)
-const typingEl = document.getElementById('typing');
-const heroText = "Learns everything he wants, And gets it done.";
-let hi = 0;
-function typeHero() {
-  typingEl.textContent = heroText.slice(0, hi++);
-  if (hi <= heroText.length) { 
-    setTimeout(typeHero, 100); 
-  } 
-  // stops automatically when done
-}
-window.addEventListener('load', typeHero);
-</script>
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('open');
+        });
 
-</body>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                
+                if (targetSection) {
+                    targetSection.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+                
+                // Close mobile menu if open
+                mobileMenu.classList.remove('open');
+            });
+        });
+
+        // Smooth scrolling for all internal links
+        document.querySelectorAll('a[href^="#"]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                
+                if (targetSection) {
+                    targetSection.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+
+
+        // Add scroll effect to navigation
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.classList.add('bg-black/90');
+            } else {
+                nav.classList.remove('bg-black/90');
+            }
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'983a9880b25ffd33',t:'MTc1ODYzNjMxNC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>

@@ -172,6 +172,25 @@
         <div class="bg-orb"></div>
     </div>
 
+    <div id="live2d-widget"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/live2d-widget@3.1.4/lib/L2Dwidget.min.js"></script>
+<script>
+  L2Dwidget.init({
+    model: {
+      jsonPath: 'https://raw.githubusercontent.com/iCharlesZ/vscode-live2d-models/master/model-library/miku/miku.model.json'
+    },
+    display: {
+      position: 'right',
+      width: 220,
+      height: 320,
+      hOffset: 0,
+      vOffset: 0
+    },
+    mobile: { show: true, scale: 0.7 }
+  });
+</script>
+
     <!-- Navigation -->
     <nav class="fixed top-0 w-full bg-black/80 backdrop-blur-md z-50 border-b border-gray-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

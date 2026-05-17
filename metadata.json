@@ -1,0 +1,8 @@
+{
+  "name": "SSection's Website",
+  "description": "A Personal Site",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
